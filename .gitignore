@@ -1,2 +1,4 @@
 out/*.*
 scripts/*.sh
+mail.py
+retailer.py

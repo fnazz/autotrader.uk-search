@@ -4,6 +4,7 @@
         "model_variant" : "",
         "manufacturer_approved" : "",
         "maximum-mileage":40000,
+        "max_price": 23000,
         "postcode" : "SW1A 0AA",
         "radius" : 1500,
         "min_year" : 2017,
