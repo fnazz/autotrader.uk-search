@@ -31,6 +31,7 @@ def get_car_details(article):
             "link": "https://www.autotrader.co.uk" + article.find("a", {"class": "tracking-standard-link"})["href"][: article.find("a", {"class": "tracking-standard-link"})["href"].find("?")],
             "price": article.find("div", {"class": "product-card-pricing__price"}).text.strip().replace(",", ""),
             "subtitle": article.find("p", {"class": "product-card-details__subtitle"}).text.strip().replace(",", ""),
+            "highlight": article.find("p", {"class": "product-card-details__attention-grabber"}).text.strip().replace(",", ""),
             "price-indicator": price_indicator,
             "seller-info":  article.find("h3", {"class": "product-card-seller-info__name atc-type-picanto"}).text.strip().replace(",", ""),
         }
