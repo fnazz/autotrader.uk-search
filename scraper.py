@@ -26,12 +26,16 @@ def get_car_details(article):
         price_indicator = ""
     else:
         price_indicator = article.find("li", {"class": "badge-group__item"}).text.strip()
+    # 
+    highlight = article.find("p", {"class": "product-card-details__attention-grabber"}).text.strip()
+    if highlight:
+        highlight_info = highlight
     car = {
             "name": article.find("h3", {"class": "product-card-details__title"}).text.strip(),
             "link": "https://www.autotrader.co.uk" + article.find("a", {"class": "tracking-standard-link"})["href"][: article.find("a", {"class": "tracking-standard-link"})["href"].find("?")],
             "price": article.find("div", {"class": "product-card-pricing__price"}).text.strip().replace(",", ""),
             "subtitle": article.find("p", {"class": "product-card-details__subtitle"}).text.strip().replace(",", ""),
-            "highlight": article.find("p", {"class": "product-card-details__attention-grabber"}).text.strip().replace(",", ""),
+            "highlight": highlight_info.replace(",", ""),
             "price-indicator": price_indicator,
             "seller-info":  article.find("h3", {"class": "product-card-seller-info__name atc-type-picanto"}).text.strip().replace(",", ""),
         }
