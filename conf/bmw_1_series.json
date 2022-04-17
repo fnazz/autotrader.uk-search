@@ -1,0 +1,15 @@
+{
+    "make" : "BMW",
+    "model" : "1 Series",
+    "model_variant" : "",
+    "manufacturer_approved" : "",
+    "maximum-mileage":50000,
+    "max_price": 20000,
+    "postcode" : "SW1A 0AA",
+    "radius" : 1500,
+    "min_year" : 2016,
+    "max_year" : 2020,
+    "include_writeoff" : "exclude",
+    "max_attempts_per_page" : 5,
+    "verbose" : "False"
+}
