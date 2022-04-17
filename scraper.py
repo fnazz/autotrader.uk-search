@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import json
 import csv
 import os
@@ -20,16 +21,27 @@ keywords = {"mileage": ["miles"],
 
 
 def get_car_details(article):
-    
-    seller_info = article.find("h3", {"class": "product-card-seller-info__name atc-type-picanto"}).text.strip()
-    if "Private" in seller_info:
+    try:
+        seller_info = article.find("h3", {"class": "product-card-seller-info__name atc-type-picanto"}).text.strip()
+        if "Private" in seller_info:
+            price_indicator = ""
+        else:
+            price_indicator = article.find("li", {"class": "badge-group__item"}).text.strip()
+    except Exception as e:
         price_indicator = ""
-    else:
-        price_indicator = article.find("li", {"class": "badge-group__item"}).text.strip()
+        pass
     # 
-    highlight = article.find("p", {"class": "product-card-details__attention-grabber"}).text.strip()
-    if highlight:
+    if article.find("p", {"class": "product-card-details__attention-grabber"}):
+        try:
+            highlight = article.find("p", {"class": "product-card-details__attention-grabber"}).text.strip()
+            highlight.encode('utf-8', 'surrogateescape').decode('utf-8', 'replace')
+        except Exception as e:
+            highlight = ""
+            pass
+        # print(highlight)
         highlight_info = highlight
+    else:
+        highlight_info = ""
     car = {
             "name": article.find("h3", {"class": "product-card-details__title"}).text.strip(),
             "link": "https://www.autotrader.co.uk" + article.find("a", {"class": "tracking-standard-link"})["href"][: article.find("a", {"class": "tracking-standard-link"})["href"].find("?")],
@@ -198,9 +210,10 @@ def get_cars(json_data, verbose=False):
 ### Output functions ###
 
 def save_csv(filename,results=None):
-    csv_columns = ["name", "link", "price","subtitle","price-indicator","seller-info","mileage", "BHP", "transmission", "fuel", "owners", "body", "ULEZ",
+    csv_columns = ["name", "link", "price","subtitle","highlight","price-indicator","seller-info","mileage", "BHP", "transmission", "fuel", "owners", "body", "ULEZ",
                    "engine", "year"]
     if results:
+        print("printing csv ...")
         with open(filename, "w", newline='') as f:
             writer = csv.DictWriter(f, fieldnames=csv_columns)
             writer.writeheader()
