@@ -65,3 +65,8 @@ optional arguments:
 ```
 ./scraper.py --type csv --inputfile conf/bmw_1_series.json --outfile out/bmw_1.csv
 ```
+
+or 
+```
+./scraper.py --type json --inputfile conf/bmw_1_series.json --outfile out/bmw_1.json
+```
