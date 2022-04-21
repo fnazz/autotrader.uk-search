@@ -37,8 +37,7 @@ def get_car_details(article):
             highlight.encode('utf-8', 'surrogateescape').decode('utf-8', 'replace')
         except Exception as e:
             highlight = ""
-            pass
-        # print(highlight)
+            pass        
         highlight_info = highlight
     else:
         highlight_info = ""
@@ -51,7 +50,6 @@ def get_car_details(article):
             "price-indicator": price_indicator,
             "seller-info":  article.find("h3", {"class": "product-card-seller-info__name atc-type-picanto"}).text.strip().replace(",", ""),
         }
-    # print(car)
     key_specs_bs_list = article.find("ul", {"class": "listing-key-specs"}).find_all("li")
 
     for key_spec_bs_li in key_specs_bs_list:
@@ -213,7 +211,6 @@ def save_csv(filename,results=None):
     csv_columns = ["name", "link", "price","subtitle","highlight","price-indicator","seller-info","mileage", "BHP", "transmission", "fuel", "owners", "body", "ULEZ",
                    "engine", "year"]
     if results:
-        print("printing csv ...")
         with open(filename, "w", newline='') as f:
             writer = csv.DictWriter(f, fieldnames=csv_columns)
             writer.writeheader()
@@ -257,14 +254,12 @@ def parse_args():
 def main():
     
     args=parse_args()
-    # print(args)
     input_file = args.inputfile
     
     json_data = {}
     # 
     if (os.path.exists(input_file)):
         with open(input_file,'r') as file:
-            # print(file)
             json_data = json.load(file)
     else:
         json_data = input_file

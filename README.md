@@ -1,5 +1,5 @@
 # Autotrader UK scraper utility
-Based off 
+A wrapper utility with few additions based off [suhailidrees/autotrader_scraper](https://github.com/suhailidrees/autotrader_scraper)
 
 
 ## Installation
