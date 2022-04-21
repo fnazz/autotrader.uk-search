@@ -10,7 +10,7 @@ Clone the repo and run `pip3 install -r requirements.txt`
 Place the configuration file under `conf` directory.
 
 ### Sample Config file
-Refer to [conf/sample.json](file:///conf/sample.json)
+Refer to [conf/sample.json](conf/sample.json)
 
 ```
 {
