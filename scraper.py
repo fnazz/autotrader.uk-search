@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import json
 import csv
@@ -244,7 +244,6 @@ def parse_args():
         "verbose" : "False"
 }
     """
-    # https://www.autotrader.co.uk/car-search?sort=datedesc&postcode=cv31nn&radius=1500&make=Audi&model=A4&include-delivery-option=on&year-to=2022&maximum-mileage=40000&ma=Y
     parser = argparse.ArgumentParser()
     parser.add_argument("--type", help="output type csv or json", default="csv")
     parser.add_argument("--outfile", help="file prefix", default="scraper_output")
